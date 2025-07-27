@@ -1,23 +1,48 @@
 package com.distribuida.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "libro")
 public class Libro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_libro")
     private int idLibro;
+    @Column(name = "titulo")
     private String title;
+    @Column(name = "editorial")
     private String editorial;
+    @Column(name = "num_paginas")
     private int pages;
+    @Column(name = "edicion")
     private String edition;
+    @Column(name = "idioma")
     private String language;
+    @Column(name = "fecha_publicacion")
     private LocalDateTime publicationDate;
+    @Column(name = "descripcion")
     private String description;
+    @Column(name = "tipo_pasta")
     private String coverType;
+    @Column(name = "ISBN")
     private String ISBN;
+    @Column(name = "num_ejemplares")
     private int copies;
+    @Column(name = "portada")
     private String cover;
+    @Column(name = "presentacion")
     private String presentation;
+    @Column(name = "precio")
     private Double price;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "id_autor")
     private Autor autor;
 
     public Libro() {

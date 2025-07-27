@@ -1,14 +1,29 @@
 package com.distribuida.model;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "factura")
 public class Factura {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_factura")
     private int idFactura;
+    @Column(name = "num_factura")
     private String billNo;
+    @Column(name = "fecha")
     private Date date;
+    @Column(name = "total_neto")
     private Double netTotal;
+    @Column(name = "iva")
     private Double iva;
+    @Column(name = "total")
     private Double total;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     public Factura() {
